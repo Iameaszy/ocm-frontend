@@ -39,3 +39,8 @@ export const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
   },
 }));
+
+export const ThemeSwitcherWrapper = styled('div')(({ theme }) => ({
+  position: 'absolute',
+  right: '28px'
+}));

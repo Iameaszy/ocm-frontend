@@ -1,16 +1,16 @@
 import {useContext} from 'react'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Switch from '@mui/material/Switch';
+import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import SearchIcon from '@mui/icons-material/Search';
-import {Search, SearchIconWrapper, StyledInputBase} from './Navbar.style'
+import {Search, SearchIconWrapper, StyledInputBase, ThemeSwitcherWrapper} from './Navbar.style'
 import { useTheme } from '@material-ui/core/styles';
 import {ColorModeContext} from '../../pages/_app'
 import { grey } from '@mui/material/colors';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7'
 
 
 export default function NavBar() {
@@ -22,7 +22,8 @@ export default function NavBar() {
     <Box>
       <AppBar position="static" sx={{
       bgcolor: mode === "dark" ? grey[900] : grey[50],
-      color: mode === "dark" ? grey[50] : grey[900]
+      color: mode === "dark" ? grey[50] : grey[900],
+      flexGrow: 1
     }}>
         <Toolbar>
           <Typography
@@ -33,7 +34,7 @@ export default function NavBar() {
           >
             Movies
           </Typography>
-          <Search bgColor={{bgcolor: mode === "light" ? grey[900] : "inherit"}}>
+          <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -42,18 +43,11 @@ export default function NavBar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
-          <FormGroup>
-            <FormControlLabel
-              control={
-                <Switch
-                  onChange={colorMode.toggleColorMode}
-                  checked={theme.palette.mode === "dark"}
-                  aria-label="login switch"
-                />
-              }
-              label={theme.palette.mode}
-            />
-          </FormGroup>
+          <ThemeSwitcherWrapper>
+            <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
+              {mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+            </IconButton>
+          </ThemeSwitcherWrapper>
         </Toolbar>
       </AppBar>
     </Box>
