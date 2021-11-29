@@ -1,6 +1,6 @@
-import MoviePage from './Movies';
-import { MovieProps } from './Movies/types';
-import { fetchMovies } from './Movies/helpers/fetchMovies';
+import MoviePage from '../screens/Movies';
+import { MovieProps } from '../screens/Movies/types';
+import { fetchMovies } from '../screens/Movies/helpers/fetchMovies';
 
 
 

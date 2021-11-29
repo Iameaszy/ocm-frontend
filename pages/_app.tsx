@@ -64,9 +64,6 @@ export default function App({Component, pageProps}: AppProps) {
                     <Component {...pageProps} />
                   </Container>
                 </main>
-                <footer>
-                  footer
-                </footer>
               </div>
         </StylesProvider>
       </ThemeProvider>

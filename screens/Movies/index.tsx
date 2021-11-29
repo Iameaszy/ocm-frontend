@@ -1,15 +1,13 @@
-import {useContext} from 'react'
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
-import Box from '@mui/material/ButtonGroup';
+import Box from '@mui/material/Box';
 import { Movie } from '../../types/movie.type';
 import { useEffect, useState } from 'react';
 import { MovieCard } from '../../components/Card';
 import { MovieProps } from './types';
 import { fetchMovies } from './helpers/fetchMovies';
 import { useTheme } from '@material-ui/core/styles';
-import {ColorModeContext} from '../_app'
 import { grey } from '@mui/material/colors';
 import { makeStyles } from '@mui/styles';
 
@@ -18,7 +16,6 @@ export default  function MoviePage(gqlData:MovieProps) {
   const {loading, error, movies, pagination = {}} = data;
   const theme = useTheme();
   const {palette: {mode}} = theme;
-  const colorMode = useContext(ColorModeContext);
 
   const useStyles = makeStyles({
     root: {
@@ -29,7 +26,6 @@ export default  function MoviePage(gqlData:MovieProps) {
   const classes = useStyles();
   useEffect(() => {
     if (data) {
-      console.log("if data", data)
       setData(data);
     }
   }, [data]);
@@ -42,7 +38,7 @@ export default  function MoviePage(gqlData:MovieProps) {
   <>
     <Grid className={classes.root} container spacing={5}>
       {movies && movies.map((movie: Movie) => 
-      <Grid key={movie.title} item xs={6} md={4}>
+      <Grid key={movie.title} item xs={12} md={4}>
           <MovieCard movie={movie} />
       </Grid>)}
     </Grid>
@@ -63,7 +59,6 @@ export default  function MoviePage(gqlData:MovieProps) {
           <Button
           disabled={!pagination?.prev}
             onClick={async () => {
-              console.log({pagination: pagination.prev});
               const data = await fetchMovies({page: pagination?.prev?.page, limit: pagination?.prev?.per_page});
 
               setData(data);
