@@ -1,12 +1,11 @@
 
-import React, { useEffect, useState, useMemo } from "react"
-import { ThemeProvider } from "@material-ui/core/styles";
+import React, { useState, useMemo } from "react"
+import { ThemeProvider, createTheme } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { colors, Container, makeStyles } from "@material-ui/core";
 import { AppProps } from 'next/dist/shared/lib/router/router';
 import NavBar from '../components/NavBar';
 import { StylesProvider, createGenerateClassName } from '@mui/styles';
-import { createTheme } from '@material-ui/core/styles';
 
 export const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
@@ -36,7 +35,6 @@ export default function App({Component, pageProps}: AppProps) {
     () =>
       createTheme({
         palette: {
-          //@ts-ignore
           mode
         },
       }),

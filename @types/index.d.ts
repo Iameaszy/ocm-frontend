@@ -4,16 +4,12 @@ import {
 } from "@material-ui/core/styles/createPalette";
 
 
-declare module '@mui/material/styles' {
+declare module "@material-ui/core/styles/createPalette" {
   interface Palette {
-    contrastThreshold: number;
-    tonalOffset: number;
-    mode?:string;
+    mode?: string;
   }
 
   interface PaletteOptions {
-    contrastThreshold?: number;
-    tonalOffset?: number;
     mode?: string
   }
 }
