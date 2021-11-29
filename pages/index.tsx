@@ -1,4 +1,3 @@
-import type { NextPage } from 'next'
 import MoviePage from './Movies';
 import { MovieProps } from './Movies/types';
 import { fetchMovies } from './Movies/helpers/fetchMovies';
@@ -6,7 +5,7 @@ import { fetchMovies } from './Movies/helpers/fetchMovies';
 
 
 
-const Home: NextPage = (prop: MovieProps) => {
+const Home = (prop: MovieProps) => {
   return (<>
     <MoviePage {...prop} />
   </>)
